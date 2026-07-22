@@ -1,6 +1,12 @@
-class Solution:
-    def runningSum(self, nums: List[int]) -> List[int]:
-        for i, _ in enumerate(nums):
-            if i > 0:
-                nums[i] += nums[i - 1]
-        return nums
+class Solution(object):
+    def runningSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        ans = []
+        total = 0
+        for i in range(len(nums)):
+            total += nums[i]
+            ans.append(total)
+        return ans 
