@@ -2,14 +2,14 @@ class Solution(object):
     def sortColors(self, nums):
         """
         :type nums: List[int]
-        :rtype: None Do not return anything, modify nums in-place instead.
+        :rtype: None
         """
 
         count0 = 0
         count1 = 0
         count2 = 0
 
-        # Count the number of 0s, 1s, and 2s
+        # Count the number of 0s, 1s and 2s
         for num in nums:
             if num == 0:
                 count0 += 1
@@ -37,5 +37,3 @@ class Solution(object):
             nums[index] = 2
             index += 1
             count2 -= 1
-
-        print(nums)  
