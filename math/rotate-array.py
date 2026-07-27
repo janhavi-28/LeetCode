@@ -16,3 +16,23 @@ class Solution(object):
 
         # Reverse remaining elements
         nums[k:] = reversed(nums[k:])
+
+
+        
+        """n = len(nums)
+
+        # If k is greater than array size
+        k = k % n
+
+        # Rotate one step, k times
+        for _ in range(k):
+
+            # Save the last element
+            temp = nums[-1]
+
+            # Shift all elements to the right
+            for i in range(n - 1, 0, -1):
+                nums[i] = nums[i - 1]
+
+            # Place the last element at the beginning
+            nums[0] = temp"""
