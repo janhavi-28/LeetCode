@@ -2,38 +2,18 @@ class Solution(object):
     def sortColors(self, nums):
         """
         :type nums: List[int]
-        :rtype: None
+        :rtype: None Do not return anything, modify nums in-place instead.
         """
 
-        count0 = 0
-        count1 = 0
-        count2 = 0
+        lo, cur, hi = 0, 0, len(nums) - 1
+        while cur <= hi:
+            if nums[cur] == 0:
+                nums[lo], nums[cur] = nums[cur], nums[lo]
+                lo += 1
+                cur += 1
+            elif nums[cur] == 2:
+                nums[hi], nums[cur] = nums[cur], nums[hi]
 
-        # Count the number of 0s, 1s and 2s
-        for num in nums:
-            if num == 0:
-                count0 += 1
-            elif num == 1:
-                count1 += 1
-            else:
-                count2 += 1
-
-        index = 0
-
-        # Fill 0s
-        while count0 > 0:
-            nums[index] = 0
-            index += 1
-            count0 -= 1
-
-        # Fill 1s
-        while count1 > 0:
-            nums[index] = 1
-            index += 1
-            count1 -= 1
-
-        # Fill 2s
-        while count2 > 0:
-            nums[index] = 2
-            index += 1
-            count2 -= 1
+                hi -= 1
+            else: 
+                cur += 1
