@@ -1,17 +1,15 @@
-class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
-
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
         h = {}
+        for i in range (len(nums)):
+            needed = target - nums[i]
+            if needed in h:
+                return [h[needed], i]
+            h[nums[i]] = i
 
-        # Step 1: Store every number with its index
-        for i, num in enumerate(nums):
-            h[num] = i
-
-        # Step 2: Find the required number
-        for i, num in enumerate(nums):
-
-            desired = target - num
-
-            if desired in h and h[desired] != i:
-                return [i, h[desired]]
-                break
+        
