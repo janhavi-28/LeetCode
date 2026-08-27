@@ -5,21 +5,30 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        #def minSubArrayLen(self, target: int, nums: List[int]) -> int:
+
         n = len(nums)
-        left = 0
-        window_sum = 0
-        min_len = float('inf')
 
-        for right in range(n):
-            window_sum += nums[right]
+        low = 0
+        total = 0
+        res = float('inf')
 
-            # shrink window from left while sum >= target
-            while window_sum >= target:
-                min_len = min(min_len, right - left + 1)
-                window_sum -= nums[left]
-                left += 1
+        for high in range(n):
 
-        return 0 if min_len == float('inf') else min_len
+            # Include current element
+            total += nums[high]
 
-        
+            # Shrink window while condition is satisfied
+            while total >= target:
+
+                length = high - low + 1
+
+                res = min(res, length)
+
+                # Remove left element
+                total -= nums[low]
+                low += 1
+
+        if res == float('inf'):
+            return 0
+
+        return res
