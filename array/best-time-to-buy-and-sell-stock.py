@@ -1,10 +1,22 @@
-class Solution:
-    def maxProfit(self, prices: List[int]) -> int:
-        min_price = float('inf')
-        profit = 0
-        
-        for p in prices:
-            min_price = min(min_price, p)
-            profit = max(profit, p - min_price)
-        
-        return profit
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+
+        min_price = prices[0]   # Minimum price seen so far
+        max_profit = 0          # Maximum profit
+
+        for i in range(1, len(prices)):
+
+            # Update minimum buying price
+            min_price = min(min_price, prices[i])
+
+            # Calculate profit if sold today
+            profit = prices[i] - min_price
+
+            # Update maximum profit
+            max_profit = max(max_profit, profit)
+
+        return max_profit
